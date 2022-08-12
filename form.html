@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Contacto</title>
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hamburgers/1.2.1/hamburgers.min.css"
+        integrity="sha512-+mlclc5Q/eHs49oIOCxnnENudJWuNqX5AogCiqRBgKnpoplPzETg2fkgBFVC6WYUVxYYljuxPNG8RE7yBy1K+g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" /> -->
+    <link rel="stylesheet" href="styles/style.css" type="text/css">
+</head>
+
+<body>
+
+    <header class="header">
+        <a href="index.html" title="Home"><img src="images/avalith-logo-white.svg" alt="Logo de Avalith."
+                class="logo-ftc"></a>
+        <nav class="nav-ftc">
+            <a href="index.html">Home</a>
+            <a href="table.html">Users</a>
+            <a href="cards.html">API Rick & Morty</a>
+            <a href="form.html">Form</a>
+        </nav>
+        <!-- <button class="hamburger hamburger--collapse" type="button">
+            <span class="hamburger-box">
+                <span class="hamburger-inner"></span>
+            </span>
+        </button> -->
+    </header>
+
+    <main class="main-form">
+        <form id="form">
+            <h1 class="form-title">Formulario</h1>
+            <p class="required">Los campos obligatorios se marcan con un <abbr title="required"
+                    aria-label="required">*</abbr>.</p>
+            <ul>
+                <li>
+                    <label for="name">Nombre<abbr title="required" aria-label="required">*</abbr></label>
+                    <input type="text" name="name" id="name" required maxlength="50" autocapitalize="words">
+                </li>
+                <li>
+                    <label for="email">Email<abbr title="required" aria-label="required">*</abbr></label>
+                    <input type="email" name="email" id="email" placeholder="e.g. john.doe@gmail.com" required
+                        maxlength="50">
+                </li>
+                <li>
+                    <label for="comment">Comentario</label>
+                    <textarea name="comment" id="comment" rows="6" placeholder="Ingrese aquí su comentario..."
+                        maxlength="500"></textarea>
+                </li>
+                <li class="button">
+                    <button type="submit">Enviar</button>
+                </li>
+            </ul>
+        </form>
+    </main>
+
+    <footer>
+        <small>by Adán Rodríguez</small>
+    </footer>
+
+</body>
+
+<script src="scripts/script-form.js"></script>
+
+</html>
