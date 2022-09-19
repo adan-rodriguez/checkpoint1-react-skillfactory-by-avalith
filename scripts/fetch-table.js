@@ -1,9 +1,21 @@
 const URL_USERS = "https://jsonplaceholder.typicode.com/users";
-fetch(URL_USERS)
-  .then((response) => response.json())
-  .then((data) => showData(data));
 
-function showData(data) {
+const fetchUsers = async () => {
+  try {
+    const response = await fetch(URL_USERS);
+    if (!response.ok) {
+      throw new Error(`HTTP error: ${response.status}`);
+    }
+    const data = await response.json();
+    showData(data);
+  } catch (error) {
+    console.error(`Could not get datos: ${error}`);
+  }
+};
+
+fetchUsers();
+
+const showData = (data) => {
   let body = ``;
   for (let i = 0; i < data.length; i++) {
     body += `
@@ -22,4 +34,4 @@ function showData(data) {
   document
     .getElementById("fetch-jsonplaceholder")
     .insertAdjacentHTML("beforeend", body);
-}
+};

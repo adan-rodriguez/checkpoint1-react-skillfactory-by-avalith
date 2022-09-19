@@ -6,28 +6,28 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formulario de Contacto</title>
-    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hamburgers/1.2.1/hamburgers.min.css"
-        integrity="sha512-+mlclc5Q/eHs49oIOCxnnENudJWuNqX5AogCiqRBgKnpoplPzETg2fkgBFVC6WYUVxYYljuxPNG8RE7yBy1K+g=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" /> -->
     <link rel="stylesheet" href="styles/style.css" type="text/css">
 </head>
 
 <body>
 
-    <header class="header">
-        <a href="index.html" title="Home"><img src="images/avalith-logo-white.svg" alt="Logo de Avalith."
-                class="logo-ftc"></a>
-        <nav class="nav-ftc">
-            <a href="index.html">Home</a>
-            <a href="table.html">Users</a>
-            <a href="cards.html">API Rick & Morty</a>
-            <a href="form.html">Form</a>
-        </nav>
-        <!-- <button class="hamburger hamburger--collapse" type="button">
-            <span class="hamburger-box">
-                <span class="hamburger-inner"></span>
-            </span>
-        </button> -->
+    <header class="top-header">
+        <div>
+            <a href="index.html" title="Home"><img src="images/avalith-logo-white.svg" alt="Logo de Avalith."
+                    class="logo-ftc"></a>
+            <button class="open-menu" aria-label="Abrir menú">
+                <img src="images/menu.svg" alt="Abrir menú">
+            </button>
+            <nav class="nav-ftc">
+                <button class="close-menu" aria-label="Cerrar menú">
+                    <img src="images/close.svg" alt="Cerrar menú">
+                </button>
+                <a href="index.html">Home</a>
+                <a href="table.html">Users</a>
+                <a href="cards.html">API Rick & Morty</a>
+                <a href="form.html">Form</a>
+            </nav>
+        </div>
     </header>
 
     <main class="main-form">
@@ -51,7 +51,7 @@
                         maxlength="500"></textarea>
                 </li>
                 <li class="button">
-                    <button type="submit">Enviar</button>
+                    <button type="submit" class="submit-button">Enviar</button>
                 </li>
             </ul>
         </form>
@@ -64,5 +64,6 @@
 </body>
 
 <script src="scripts/script-form.js"></script>
+<script src="scripts/app.js"></script>
 
 </html>

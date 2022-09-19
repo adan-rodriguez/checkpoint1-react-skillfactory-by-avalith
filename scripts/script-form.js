@@ -1,13 +1,15 @@
 let formElement = document.getElementById("form");
 
-const getFormData = (ev) => {
-  ev.preventDefault(); // deshabilita el comportamiento por defecto de submit
+const getFormData = (e) => {
+  e.preventDefault();
 
   let formData = new FormData(formElement);
 
   for (let data of formData) {
     console.log(data[0] + ": " + data[1]);
   }
+
+  formElement.reset();
 };
 
 formElement.addEventListener("submit", getFormData);
