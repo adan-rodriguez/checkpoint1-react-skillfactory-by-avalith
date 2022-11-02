@@ -7,6 +7,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formulario de Contacto</title>
     <link rel="stylesheet" href="styles/style.css" type="text/css">
+    <!-- <style>
+        .invalid {
+            border-color: red;
+        }
+
+        #error {
+            color: red
+        }
+    </style> -->
+    <script defer src="scripts/script-form.js"></script>
+    <script defer src="scripts/app.js"></script>
 </head>
 
 <body>
@@ -44,6 +55,7 @@
                     <label for="email">Email<abbr title="required" aria-label="required">*</abbr></label>
                     <input type="email" name="email" id="email" placeholder="e.g. john.doe@gmail.com" required
                         maxlength="50">
+                    <div id="error"></div>
                 </li>
                 <li>
                     <label for="comment">Comentario</label>
@@ -62,8 +74,5 @@
     </footer>
 
 </body>
-
-<script src="scripts/script-form.js"></script>
-<script src="scripts/app.js"></script>
 
 </html>
