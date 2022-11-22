@@ -132,7 +132,7 @@ form {
 }
 
 .required {
-  text-align: right;
+  text-align: center;
   font-size: smaller;
   color: grey;
   margin: 1em;
@@ -148,7 +148,7 @@ form ul {
 }
 
 form li + li {
-  margin-top: 2em;
+  margin-top: calc(2em - 12px);
 }
 
 label {
@@ -183,12 +183,15 @@ textarea {
   resize: none;
 }
 
-.submit-button {
+.submit-button-disabled {
   font-size: 1em;
   padding: 0.75em 3em;
   display: block;
   margin: auto;
   letter-spacing: 1px;
+}
+
+.submit-button {
   cursor: pointer;
   transition: 0.4s;
 }
@@ -200,6 +203,14 @@ textarea {
 input:hover,
 textarea:hover {
   background-color: #efefef;
+}
+
+.name-error-message,
+.email-error-message {
+  color: red;
+  font-size: 0.7rem;
+  margin-left: 0.75rem;
+  height: 12px;
 }
 
 /* ------------------------------------------------------------------------------------------------------- */

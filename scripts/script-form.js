@@ -1,8 +1,12 @@
-let formElement = document.getElementById("form");
+const form = document.getElementById("form");
+const email = document.getElementById("email");
+const emailErrorMessage = document.querySelector(".email-error-message");
+const nameInput = document.getElementById("name");
+const nameErrorMessage = document.querySelector(".name-error-message");
+const buttonSubmit = document.querySelector('button[type="submit"]');
 
 const getFormData = (e) => {
-  e.preventDefault();
-
+  // con e.target no hace falta crear más referencias
   console.log("Name:", e.target.name.value);
   console.log("Email:", e.target.email.value);
   console.log("Comment:", e.target.comment.value);
@@ -13,10 +17,10 @@ const getFormData = (e) => {
   //   console.log(data[0] + ": " + data[1]);
   // }
 
-  // formElement.reset();
+  form.reset();
 };
 
-formElement.addEventListener("submit", getFormData);
+// -----------------------------------------------------------------------------------------------
 
 // email.onblur = function () {
 //   if (!email.value.includes("@")) {
@@ -33,3 +37,90 @@ formElement.addEventListener("submit", getFormData);
 //     error.innerHTML = "";
 //   }
 // };
+
+// -----------------------------------------------------------------------------------------------
+
+// const inputEmail = document.getElementById("email");
+// const messageErrorEmail = document.getElementById("message-error-email");
+
+// const validateEmail = () => {
+//   if (!inputEmail.value.includes("@")) {
+//     inputEmail.classList.add("invalid");
+//     messageErrorEmail.innerText = "Por favor introduzca un correo válido.";
+//   }
+// };
+
+// const removeErrorValidateEmail = () => {
+//   if (inputEmail.classList.contains("invalid")) {
+//         inputEmail.classList.remove("invalid");
+//         messageErrorEmail.innerText = "";
+//       }
+// }
+
+// inputEmail.addEventListener("blur", validateEmail);
+// inputEmail.addEventListener("focus", removeErrorValidateEmail);
+
+// ------------------------------------------------------------------------------------------
+
+// const email = document.getElementById("email");
+
+// email.addEventListener("input", function (event) {
+//   if (email.validity.typeMismatch) {
+//     email.setCustomValidity("¡Se esperaba una dirección de correo electrónico!");
+//   } else {
+//     email.setCustomValidity("");
+//   }
+// });
+
+// ---------------------------------------------------------------------------------------------
+
+nameInput.addEventListener("blur", () => {
+  if (!nameInput.validity.valid) {
+    nameErrorMessage.innerText = "Ingresa tu nombre.";
+    nameInput.style.borderColor = "red";
+  }
+});
+
+email.addEventListener("blur", () => {
+  if (!email.validity.valid) {
+    showEmailErrorMessage();
+    email.style.borderColor = "red";
+  }
+});
+
+nameInput.addEventListener("input", () => {
+  nameErrorMessage.innerText = "";
+  nameInput.style.borderColor = "";
+  if (email.validity.valid && nameInput.validity.valid) {
+    buttonSubmit.removeAttribute("disabled");
+    buttonSubmit.classList.add("submit-button");
+  } else {
+    buttonSubmit.setAttribute("disabled", "true");
+    buttonSubmit.classList.remove("submit-button");
+  }
+});
+
+email.addEventListener("input", () => {
+  emailErrorMessage.innerText = "";
+  email.style.borderColor = "";
+  if (email.validity.valid && nameInput.validity.valid) {
+    buttonSubmit.removeAttribute("disabled");
+    buttonSubmit.classList.add("submit-button");
+  } else {
+    buttonSubmit.setAttribute("disabled", "true");
+    buttonSubmit.classList.remove("submit-button");
+  }
+});
+
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
+  getFormData(e);
+});
+
+const showEmailErrorMessage = () => {
+  if (email.validity.valueMissing) {
+    emailErrorMessage.innerText = "Ingresa tu email.";
+  } else if (email.validity.typeMismatch) {
+    emailErrorMessage.innerText = "Ingresa un email válido.";
+  }
+};
