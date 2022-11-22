@@ -170,6 +170,7 @@ textarea {
   letter-spacing: 1px;
   transition: 0.3s;
   font-family: sans-serif;
+  outline: none;
 }
 
 input:focus,

@@ -74,42 +74,100 @@ const getFormData = (e) => {
 
 // ---------------------------------------------------------------------------------------------
 
+// nameInput.addEventListener("blur", () => {
+//   if (!nameInput.validity.valid) {
+//     nameErrorMessage.innerText = "Ingresa tu nombre.";
+//     nameInput.style.borderColor = "red";
+//   }
+// });
+
+// email.addEventListener("blur", () => {
+//   if (!email.validity.valid) {
+//     showEmailErrorMessage();
+//     email.style.borderColor = "red";
+//   }
+// });
+
+// nameInput.addEventListener("input", () => {
+//   nameErrorMessage.innerText = "";
+//   nameInput.style.borderColor = "";
+//   if (email.validity.valid && nameInput.validity.valid) {
+//     buttonSubmit.removeAttribute("disabled");
+//     buttonSubmit.classList.add("submit-button");
+//   } else {
+//     buttonSubmit.setAttribute("disabled", "true");
+//     buttonSubmit.classList.remove("submit-button");
+//   }
+// });
+
+// email.addEventListener("input", () => {
+//   emailErrorMessage.innerText = "";
+//   email.style.borderColor = "";
+//   if (email.validity.valid && nameInput.validity.valid) {
+//     buttonSubmit.removeAttribute("disabled");
+//     buttonSubmit.classList.add("submit-button");
+//   } else {
+//     buttonSubmit.setAttribute("disabled", "true");
+//     buttonSubmit.classList.remove("submit-button");
+//   }
+// });
+
+// form.addEventListener("submit", (e) => {
+//   e.preventDefault();
+//   getFormData(e);
+// });
+
+// const showEmailErrorMessage = () => {
+//   if (email.validity.valueMissing) {
+//     emailErrorMessage.innerText = "Ingresa tu email.";
+//   } else if (email.validity.typeMismatch) {
+//     emailErrorMessage.innerText = "Ingresa un email válido.";
+//   }
+// };
+
+// ------------------------------------------------------------------------------------------------
+
+const emailRegExp =
+  /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+
 nameInput.addEventListener("blur", () => {
-  if (!nameInput.validity.valid) {
+  if (nameInput.value.length === 0) {
     nameErrorMessage.innerText = "Ingresa tu nombre.";
     nameInput.style.borderColor = "red";
   }
 });
 
 email.addEventListener("blur", () => {
-  if (!email.validity.valid) {
+  if (email.value.length === 0 || !emailRegExp.test(email.value)) {
     showEmailErrorMessage();
     email.style.borderColor = "red";
   }
 });
 
+const handleDisabledSubmitButton = () => {
+  if (
+    nameInput.value.length === 0 ||
+    email.value.length === 0 ||
+    !emailRegExp.test(email.value)
+  ) {
+    buttonSubmit.setAttribute("disabled", "true");
+    buttonSubmit.classList.remove("submit-button");
+  } else {
+    buttonSubmit.removeAttribute("disabled");
+    buttonSubmit.classList.add("submit-button");
+  }
+};
+
 nameInput.addEventListener("input", () => {
   nameErrorMessage.innerText = "";
   nameInput.style.borderColor = "";
-  if (email.validity.valid && nameInput.validity.valid) {
-    buttonSubmit.removeAttribute("disabled");
-    buttonSubmit.classList.add("submit-button");
-  } else {
-    buttonSubmit.setAttribute("disabled", "true");
-    buttonSubmit.classList.remove("submit-button");
-  }
+  handleDisabledSubmitButton();
 });
 
 email.addEventListener("input", () => {
   emailErrorMessage.innerText = "";
   email.style.borderColor = "";
-  if (email.validity.valid && nameInput.validity.valid) {
-    buttonSubmit.removeAttribute("disabled");
-    buttonSubmit.classList.add("submit-button");
-  } else {
-    buttonSubmit.setAttribute("disabled", "true");
-    buttonSubmit.classList.remove("submit-button");
-  }
+  handleDisabledSubmitButton();
 });
 
 form.addEventListener("submit", (e) => {
@@ -118,9 +176,9 @@ form.addEventListener("submit", (e) => {
 });
 
 const showEmailErrorMessage = () => {
-  if (email.validity.valueMissing) {
+  if (email.value.length === 0) {
     emailErrorMessage.innerText = "Ingresa tu email.";
-  } else if (email.validity.typeMismatch) {
+  } else if (!emailRegExp.test(email.value)) {
     emailErrorMessage.innerText = "Ingresa un email válido.";
   }
 };

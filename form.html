@@ -40,13 +40,15 @@
             <ul>
                 <li>
                     <label for="name">Nombre completo<abbr title="required" aria-label="required">*</abbr></label>
-                    <input type="text" name="name" id="name" required maxlength="50" autocapitalize="words">
+                    <!-- <input type="text" name="name" id="name" required maxlength="50" autocapitalize="words"> -->
+                    <input name="name" id="name" maxlength="50" autocapitalize="words">
                     <div class="name-error-message" aria-live="polite"></div>
                 </li>
                 <li>
                     <label for="email">Email<abbr title="required" aria-label="required">*</abbr></label>
-                    <input type="email" name="email" id="email" placeholder="e.g. john.doe@gmail.com" required
-                        maxlength="50">
+                    <!-- <input type="email" name="email" id="email" placeholder="e.g. john.doe@gmail.com" required
+                        maxlength="50"> -->
+                    <input name="email" id="email" placeholder="e.g. john.doe@gmail.com" maxlength="50">
                     <div class="email-error-message" aria-live="polite"></div>
                 </li>
                 <li>
